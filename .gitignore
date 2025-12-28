@@ -10,3 +10,8 @@ build/
 
 # Ignore logs
 *.log
+
+# Ignore uploads folder
+uploads/
+
+
