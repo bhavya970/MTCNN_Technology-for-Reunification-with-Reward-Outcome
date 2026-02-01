@@ -5,6 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const { Server } = require("socket.io");
 const http = require("http");
+const fs = require('fs');
 const faceapi = require("face-api.js");
 const canvas = require("canvas");
 const bcrypt = require("bcrypt");
@@ -369,6 +370,38 @@ app.get("/api/mycases/:id", async (req, res) => {
   const id = req.params.id;
   const cases = await Case.find({ uploadedUserId: id });
   res.json(cases);
+});
+
+// Delete a case by id (and remove the uploaded file)
+app.delete('/api/case/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const c = await Case.findById(id);
+    if (!c) return res.status(404).json({ error: 'Case not found' });
+
+    // remove the image file from uploads folder if exists
+    if (c.imageUrl) {
+      try {
+        // imageUrl expected like http://localhost:5000/uploads/<filename>
+        const parts = c.imageUrl.split('/uploads/');
+        if (parts.length === 2) {
+          const filename = parts[1];
+          const filepath = path.join(__dirname, 'uploads', filename);
+          if (fs.existsSync(filepath)) {
+            fs.unlinkSync(filepath);
+          }
+        }
+      } catch (err) {
+        console.warn('Failed to remove file for case', id, err.message);
+      }
+    }
+
+    await Case.findByIdAndDelete(id);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Delete case error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
 });
 app.get("/api/users", async (req, res) => {
   const users = await User.find();
