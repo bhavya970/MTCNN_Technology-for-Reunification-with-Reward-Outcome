@@ -1,8 +1,8 @@
 # Team Members:
-Gurram Bhavya Sree
-Karri Purnima
-Mundru AnuRekha Chowdary
-Kesana Jaya Krishna
+Gurram Bhavya Sree\
+Karri Purnima\
+Mundru AnuRekha Chowdary\
+Kesana Jaya Krishna\
 
 # Guided By:
 Dr. Amit Ghosh M
