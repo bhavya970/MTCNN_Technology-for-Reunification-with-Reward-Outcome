@@ -1,3 +1,12 @@
+# Team Members:
+Gurram Bhavya Sree
+Karri Purnima
+Mundru AnuRekha Chowdary
+Kesana Jaya Krishna
+
+# Guided By:
+Dr. Amit Ghosh M
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
