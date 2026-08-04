@@ -2,7 +2,7 @@
 Gurram Bhavya Sree\
 Karri Purnima\
 Mundru AnuRekha Chowdary\
-Kesana Jaya Krishna\
+Kesana Jaya Krishna
 
 # Guided By:
 Dr. Amit Ghosh M
